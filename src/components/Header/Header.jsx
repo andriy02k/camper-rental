@@ -1,24 +1,36 @@
-import { NavLink, Outlet } from 'react-router-dom'
-// import css from './Header.module.css'
+import { NavLink, Outlet } from 'react-router-dom';
+import css from './Header.module.css';
+import '../../index.css';
 
 const Header = () => {
-	return (
-		<>
-			<header className="bg-gray-800 text-white p-4 font-medium text-36px">
-				<nav className="container mx-auto flex justify-between items-center">
-					<ul className="flex space-x-12">
-						<li className="hover:text-gray-400">
-							<NavLink className="hover:text-gray-400" to='/'>Home</NavLink>
-						</li>
-						<li className="hover:text-gray-400">
-							<NavLink className="hover:text-gray-400" to='/movies'>Movies</NavLink>
-						</li>
-					</ul>
-				</nav>
-			</header>
-			<Outlet />
-		</>
-	)
-}
+  return (
+    <>
+      <header className={css.header}>
+        <div className="container">
+          <nav>
+            <ul className={css.nav}>
+              <li>
+                <NavLink className={css.item} to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={css.item} to="/catalog">
+                  Catalog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={css.item} to="/favorites">
+                  Favorites
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <Outlet />
+    </>
+  );
+};
 
-export default Header
+export default Header;
