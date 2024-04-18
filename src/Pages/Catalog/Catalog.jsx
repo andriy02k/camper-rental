@@ -1,7 +1,12 @@
 import React from 'react';
+import List from '../../components/List/List';
 
 const Catalog = () => {
-  return <div>Catalog</div>;
+  return (
+    <section className="section">
+      <List />
+    </section>
+  );
 };
 
 export default Catalog;

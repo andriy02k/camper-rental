@@ -12,7 +12,7 @@ const Home = () => {
   };
 
   return (
-    <section className={css.section}>
+    <section className="section">
       <div className="container">
         <div className={css.flex}>
           <img src={img} className={css.img} alt="camper" />
