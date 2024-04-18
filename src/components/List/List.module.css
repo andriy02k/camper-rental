@@ -1,3 +1,9 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .list {
     display: flex;
     flex-direction: column;
@@ -62,6 +68,16 @@
     background: #E44848;
     color: #fff;
     margin-top: 8px;
+}
+
+.button:hover,
+.button:focus {
+    border: #b02a2a;
+    background: #b02a2a;
+}
+
+.load {
+    width: 20%;
 }
 
 @media only screen and (min-width: 1440px) {

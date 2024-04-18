@@ -7,7 +7,7 @@ import '../../index.css';
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleravigate = () => {
+  const handlerNavigate = () => {
     navigate('/catalog');
   };
 
@@ -45,7 +45,7 @@ const Home = () => {
           </li>
         </ul>
       </div>
-      <button className={css.button} type="button" onClick={handleravigate}>
+      <button className={css.button} type="button" onClick={handlerNavigate}>
         Choose your camper
       </button>
     </section>
