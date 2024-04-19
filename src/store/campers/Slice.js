@@ -24,6 +24,7 @@ const campersSlice = createSlice({
       .addCase(getAllCampersThunk.pending, handlePaending)
       .addCase(getAllCampersThunk.rejected, handleReject)
       .addCase(getAllCampersThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
         state.items = payload;
       });
   },

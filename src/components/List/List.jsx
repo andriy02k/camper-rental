@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { campersSelector } from '../../store/selectors';
-import { getAllCampersThunk } from '../../store/Thunks';
+import { openModal } from '../../store/modal/slice';
+import { modalSelector } from '../../store/modal/selector';
+import { campersSelector } from '../../store/campers/selectors';
+import { getAllCampersThunk } from '../../store/campers/Thunks';
 import { Svg } from '../../components/Icons/Icons';
 import '../../index.css';
 import css from './List.module.css';
+import Modal from '../Modal/Modal';
+import ModalContent from '../ModalContent/ModalContent';
 
 const List = () => {
   const dispatch = useDispatch();
   const campers = useSelector(campersSelector);
+  const showModal = useSelector(modalSelector);
   const [show, setShow] = useState(4);
+  const [showModalCurrent, setShowModalCurrent] = useState(null);
 
   useEffect(() => {
     dispatch(getAllCampersThunk());
@@ -17,6 +23,15 @@ const List = () => {
 
   const showMore = () => {
     setShow(prev => prev + 4);
+  };
+
+  const handleOpenModal = () => {
+    dispatch(openModal());
+  };
+
+  const handleOpenModalCurrent = id => {
+    setShowModalCurrent(id);
+    handleOpenModal();
   };
 
   return (
@@ -94,7 +109,17 @@ const List = () => {
                       AC
                     </div>
                   </div>
-                  <button className={css.button}>Show more</button>
+                  <button
+                    className={css.button}
+                    onClick={() => handleOpenModalCurrent(_id)}
+                  >
+                    Show more
+                  </button>
+                  {showModal && showModalCurrent === _id && (
+                    <Modal>
+                      <ModalContent camper={campers[_id - 1]} />
+                    </Modal>
+                  )}
                 </div>
               </li>
             )
