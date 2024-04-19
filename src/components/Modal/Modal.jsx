@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal } from '../../store/modal/slice';
 import { modalSelector } from '../../store/modal/selector';
+import { Svg } from '../../components/Icons/Icons';
 import css from './Modal.module.css';
 
 const Modal = ({ children }) => {
@@ -38,7 +39,9 @@ const Modal = ({ children }) => {
             : css.modalContent
         }
       >
-        <button onClick={() => dispatch(closeModal())}>X</button>
+        <button className={css.button} onClick={() => dispatch(closeModal())}>
+          <Svg id={'#icon-close'} width={32} height={32} />
+        </button>
         {children}
       </div>
     </div>

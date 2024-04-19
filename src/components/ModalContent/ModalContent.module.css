@@ -1,0 +1,85 @@
+.img {
+    border-radius: 14px;
+}
+
+.title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.loc_container {
+    display: flex;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.gap {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.price {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 6px;
+}
+
+.img_container {
+    display: flex;
+    overflow: scroll;
+    gap: 12px;
+}
+
+.desc {
+    color:  #475467;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5; 
+    margin: 8px 0;
+}
+
+.options {
+    color: #101828;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+
+    display: flex;
+    gap: 20px;
+}
+
+.option{
+    position: relative;
+}
+
+.option:hover::after, .option:focus::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    display: block;
+    background-color: #E44848;
+    border-radius: 2px;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+}
+
+@media only screen and (min-width: 1440px) {
+    .desc {
+        width: 902px;
+        margin: 24px 0;
+    }
+
+    .img_container {
+        overflow: auto;
+        justify-content: center;
+    }
+}
