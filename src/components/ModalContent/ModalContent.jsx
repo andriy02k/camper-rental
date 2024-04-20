@@ -57,8 +57,8 @@ const ModalContent = ({ camper }) => {
           Reviews
         </div>
       </div>
-      {showFeatures && <Features />}
-      {showReviews && <Reviews />}
+      {showFeatures && <Features camper={camper} />}
+      {showReviews && <Reviews camper={camper} />}
     </div>
   );
 };

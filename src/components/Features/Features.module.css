@@ -1,0 +1,46 @@
+.features {
+    width: 100%;
+}
+
+.benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 8px;
+}
+
+.item {
+    border-radius: 100px;
+    background: #F2F4F7;
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+}
+
+.details {
+    margin-top: 40px;
+    
+}
+
+.title{
+    margin-bottom: 24px;
+}
+
+.params {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+@media screen and (min-width: 1440px) {
+    .flex {
+        display: flex;
+    justify-content: space-around;    
+    }
+    .features {
+        width: 50%;
+    }
+    .params {
+        margin-bottom: 14px;
+    }
+}
