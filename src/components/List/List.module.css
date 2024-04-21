@@ -80,6 +80,11 @@
     width: 40%;
 }
 
+.like {
+    border: none;
+    background-color: inherit;
+}
+
 @media only screen and (min-width: 768px) {
     .load {
             width: 20%;

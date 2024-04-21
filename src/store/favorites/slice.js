@@ -9,8 +9,14 @@ const favoritesSlice = createSlice({
     addToLocalStorage: (state, action) => {
       state.favorites.push(action.payload);
     },
+    removeFromLocalStorage: (state, action) => {
+      state.favorites = state.favorites.filter(
+        item => item._id !== action.payload._id
+      );
+    },
   },
 });
 
-export const { addToLocalStorage } = favoritesSlice.actions;
+export const { addToLocalStorage, removeFromLocalStorage } =
+  favoritesSlice.actions;
 export const favoritesReducer = favoritesSlice.reducer;

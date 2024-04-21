@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../store/modal/slice';
 import { modalSelector } from '../../store/modal/selector';
+import { favoritesSelector } from '../../store/favorites/selector';
 import { campersSelector } from '../../store/campers/selectors';
 import { getAllCampersThunk } from '../../store/campers/Thunks';
-import { addToLocalStorage } from '../../store/favorites/slice';
+import {
+  addToLocalStorage,
+  removeFromLocalStorage,
+} from '../../store/favorites/slice';
 import { Svg } from '../../components/Icons/Icons';
 import '../../index.css';
 import css from './List.module.css';
@@ -14,6 +18,7 @@ import ModalContent from '../ModalContent/ModalContent';
 const List = () => {
   const dispatch = useDispatch();
   const campers = useSelector(campersSelector);
+  const favorites = useSelector(favoritesSelector);
   const showModal = useSelector(modalSelector);
   const [show, setShow] = useState(4);
   const [showModalCurrent, setShowModalCurrent] = useState(null);
@@ -36,7 +41,12 @@ const List = () => {
   };
 
   const handleAddToFavorites = item => {
-    dispatch(addToLocalStorage(item));
+    const isFavorite = favorites.some(({ _id }) => _id === item._id);
+    if (isFavorite) {
+      dispatch(removeFromLocalStorage(item));
+    } else {
+      dispatch(addToLocalStorage(item));
+    }
   };
 
   return (
@@ -67,9 +77,15 @@ const List = () => {
                     <div className={css.price}>
                       <p>&#x20AC;{price.toFixed(2)}</p>
                       <button
+                        className={css.like}
                         onClick={() => handleAddToFavorites(campers[_id - 1])}
                       >
-                        <Svg id={'#icon-default'} width={24} height={24} />
+                        {favorites.findIndex(item => item._id === _id) ===
+                        -1 ? (
+                          <Svg id={'#icon-default'} width={24} height={24} />
+                        ) : (
+                          <Svg id={'#icon-red'} width={24} height={24} />
+                        )}
                       </button>
                     </div>
                   </div>

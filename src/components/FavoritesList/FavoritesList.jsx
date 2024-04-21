@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../store/modal/slice';
 import { modalSelector } from '../../store/modal/selector';
 import { campersSelector } from '../../store/campers/selectors';
 import { favoritesSelector } from '../../store/favorites/selector';
-import { getAllCampersThunk } from '../../store/campers/Thunks';
-import { addToLocalStorage } from '../../store/favorites/slice';
+import { removeFromLocalStorage } from '../../store/favorites/slice';
 import { Svg } from '../../components/Icons/Icons';
 import '../../index.css';
 import css from '../List/List.module.css';
@@ -19,10 +18,6 @@ const FavoritesList = () => {
   const showModal = useSelector(modalSelector);
   const [show, setShow] = useState(4);
   const [showModalCurrent, setShowModalCurrent] = useState(null);
-
-  useEffect(() => {
-    dispatch(getAllCampersThunk());
-  }, [dispatch]);
 
   const showMore = () => {
     setShow(prev => prev + 4);
@@ -38,8 +33,7 @@ const FavoritesList = () => {
   };
 
   const handleAddToFavorites = item => {
-    dispatch(addToLocalStorage(item));
-    console.log(item);
+    dispatch(removeFromLocalStorage(item));
   };
 
   return (
@@ -70,9 +64,10 @@ const FavoritesList = () => {
                     <div className={css.price}>
                       <p>&#x20AC;{price.toFixed(2)}</p>
                       <button
-                        onClick={() => handleAddToFavorites(favorites[_id - 1])}
+                        className={css.like}
+                        onClick={() => handleAddToFavorites(campers[_id - 1])}
                       >
-                        <Svg id={'#icon-default'} width={24} height={24} />
+                        <Svg id={'#icon-red'} width={24} height={24} />
                       </button>
                     </div>
                   </div>
