@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from '../Form/Form';
-import { Svg } from '../../components/Icons/Icons';
+// import { Svg } from '../../components/Icons/Icons';
 import css from './Reviews.module.css';
 
 const Reviews = ({ camper }) => {
