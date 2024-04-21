@@ -78,7 +78,6 @@ const Features = ({ camper }) => {
           </div>
         </div>
       </div>
-
       <Form />
     </div>
   );
