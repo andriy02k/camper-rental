@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../store/modal/slice';
 import { modalSelector } from '../../store/modal/selector';
 import { campersSelector } from '../../store/campers/selectors';
+import { favoritesSelector } from '../../store/favorites/selector';
 import { getAllCampersThunk } from '../../store/campers/Thunks';
 import { addToLocalStorage } from '../../store/favorites/slice';
 import { Svg } from '../../components/Icons/Icons';
 import '../../index.css';
-import css from './List.module.css';
+import css from '../List/List.module.css';
 import Modal from '../Modal/Modal';
 import ModalContent from '../ModalContent/ModalContent';
 
-const List = () => {
+const FavoritesList = () => {
   const dispatch = useDispatch();
+  const favorites = useSelector(favoritesSelector);
   const campers = useSelector(campersSelector);
   const showModal = useSelector(modalSelector);
   const [show, setShow] = useState(4);
@@ -37,12 +39,13 @@ const List = () => {
 
   const handleAddToFavorites = item => {
     dispatch(addToLocalStorage(item));
+    console.log(item);
   };
 
   return (
     <div className={`${css.container} container`}>
       <ul className={css.list}>
-        {campers
+        {favorites
           .slice(0, show)
           .map(
             ({
@@ -67,7 +70,7 @@ const List = () => {
                     <div className={css.price}>
                       <p>&#x20AC;{price.toFixed(2)}</p>
                       <button
-                        onClick={() => handleAddToFavorites(campers[_id - 1])}
+                        onClick={() => handleAddToFavorites(favorites[_id - 1])}
                       >
                         <Svg id={'#icon-default'} width={24} height={24} />
                       </button>
@@ -127,7 +130,7 @@ const List = () => {
             )
           )}
       </ul>
-      {show < campers.length && (
+      {show < favorites.length && (
         <button className={`${css.button} ${css.load}`} onClick={showMore}>
           Load more
         </button>
@@ -136,4 +139,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default FavoritesList;
