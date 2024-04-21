@@ -1,0 +1,48 @@
+.flex {
+    margin-top: 16px;
+}
+
+.list {
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #F2F4F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E44848;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+@media screen and (min-width: 1440px) {
+    .flex {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .desc {
+        max-width: 400px;
+    }
+}

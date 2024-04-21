@@ -8,6 +8,16 @@ const ModalContent = ({ camper }) => {
   const [showFeatures, setShowFeatures] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
 
+  const handleFeatures = () => {
+    setShowFeatures(!showFeatures);
+    if (showReviews) setShowReviews(!showReviews);
+  };
+
+  const handleReviews = () => {
+    setShowReviews(!showReviews);
+    if (showFeatures) setShowFeatures(!showFeatures);
+  };
+
   return (
     <div>
       <div className={css.title}>{camper.name}</div>
@@ -44,16 +54,10 @@ const ModalContent = ({ camper }) => {
       </div>
       <p className={css.desc}>{camper.description}</p>
       <div className={css.options}>
-        <div
-          className={css.option}
-          onClick={() => setShowFeatures(!showFeatures)}
-        >
+        <div className={css.option} onClick={handleFeatures}>
           Features
         </div>
-        <div
-          className={css.option}
-          onClick={() => setShowReviews(!showReviews)}
-        >
+        <div className={css.option} onClick={handleReviews}>
           Reviews
         </div>
       </div>
