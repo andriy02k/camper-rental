@@ -77,18 +77,16 @@
 }
 
 .load {
-    width: 40%;
+    padding: 16px 32px;
+    color: #101828;
+    border-radius: 200px;
+    background-color: #fff;
+    border: 1px solid rgba(71, 84, 103, 0.20);
 }
 
 .like {
     border: none;
     background-color: inherit;
-}
-
-@media only screen and (min-width: 768px) {
-    .load {
-            width: 20%;
-    }
 }
 
 @media only screen and (min-width: 1440px) {

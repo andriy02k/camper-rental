@@ -48,7 +48,7 @@ const Form = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <input
-          className={css.input}
+          className={`${css.input} ${css.calendar}`}
           type="date"
           placeholder="Booking date"
           value={date}
